@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.btn_get_onclick = function(e) {
+    console.log(ipt_name.getValue());
+};
+
+scwin.btn_set_onclick = function(e) {
+    ipt_name.setValue("코드시인");
+};
+
+scwin.btn_readonly_onclick = function(e) {
+    ipt_name.setReadOnly(true);
+};
+scwin.btn_readonly_reset_onclick = function(e) {
+    ipt_name.setReadOnly(false);
+};
+
+scwin.btn_able_onclick = function(e) {
+    ipt_name.setDisabled(false)
+};
+
+scwin.btn_disable_onclick = function(e) {
+    ipt_name.setDisabled(true);
+};
+
+
+scwin.btn_reset_onclick = function() {
+    ipt_name.setValue("");
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+
+    	<xf:group id="">
+    		<w2:textbox style="width: 150px;height: 23px;" id="" label="InputBox"></w2:textbox>
+    		<xf:input id="ipt_name" style="width: 144px;height: 21px;" placeholder="이름을 입력하는 칸입니다."></xf:input>
+    		<xf:trigger type="button" id="btn_get" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_get_onclick">
+    			<xf:label><![CDATA[값 읽기]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger type="button" id="btn_set" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_set_onclick">
+    			<xf:label><![CDATA[값 넣기]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger type="button" id="btn_readonly" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_readonly_onclick">
+    			<xf:label><![CDATA[읽기전용]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger type="button" id="btn_readonly_reset" style="width: 80px;height: 23px;"
+    			ev:onclick="scwin.btn_readonly_reset_onclick">
+    			<xf:label><![CDATA[읽기전용해제]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger type="button" id="btn_able" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_able_onclick">
+    			<xf:label><![CDATA[활성화]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger type="button" id="btn_disable" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_disable_onclick">
+    			<xf:label><![CDATA[비활성화]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger type="button" id="btn_reset" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_reset_onclick">
+    			<xf:label><![CDATA[초기화]]></xf:label>
+    		</xf:trigger>
+    	</xf:group>
+    	<xf:group id="">
+    		<w2:textbox style="width: 150px;height: 23px;" id="" label="SelectBox"></w2:textbox>
+    		<xf:select1 id="" chooseOption="" style="width: 148px;height: 21px;" submenuSize="auto" allOption="" disabled="false"
+    			direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="">
+    			<xf:choices>
+    				<xf:item>
+    					<xf:label><![CDATA[솔루션개발팀]]></xf:label>
+    					<xf:value><![CDATA[D01]]></xf:value>
+    				</xf:item>
+    				<xf:item>
+    					<xf:label><![CDATA[경영지원팀]]></xf:label>
+    					<xf:value><![CDATA[D02]]></xf:value>
+    				</xf:item>
+    			</xf:choices>
+    		</xf:select1>
+    	</xf:group>
+    	<xf:group id="">
+    		<w2:textbox style="width: 150px;height: 23px;" id="" label="Calendar"></w2:textbox>
+    		<w2:calendar id="" style="width: 200px;height: 200px;"></w2:calendar>
+    		<w2:inputCalendar id="" style="width: 150px;height: 23px;" calendarValueType="yearMonthDate"></w2:inputCalendar>
+    		<w2:scheduleCalendar selectable="" ioFormat="yyyyMMdd" id="" lang="" defaultDate="" editable="" headerRightBtn="" titleColumn=""
+    			startColumn="" dataList="" style="width: 500px;height: 300px;" headerLeftBtn="" idColumn="" headerTitle="">
+    		</w2:scheduleCalendar>
+    	</xf:group>
+    	<xf:group id="">
+    		<w2:textbox style="width: 150px;height: 23px;" id="" label="CheckBox"></w2:textbox>
+    		<xf:select selectedindex="-1" id="" appearance="full" style="width: 148px;height:50px;" cols="" rows="" ref="">
+    			<xf:choices>
+    				<xf:item>
+    					<xf:label><![CDATA[목록1]]></xf:label>
+    					<xf:value><![CDATA[L01]]></xf:value>
+    				</xf:item>
+    				<xf:item>
+    					<xf:label><![CDATA[목록2]]></xf:label>
+    					<xf:value><![CDATA[L02]]></xf:value>
+    				</xf:item>
+    			</xf:choices>
+    		</xf:select>
+
+    	</xf:group></body>
+</html>

@@ -1,0 +1,8 @@
+# WebSquare 엔진/라이브러리/라이선스 (상용, 업로드 금지)
+WebContent/websquare/_websquare_/
+WebContent/WEB-INF/lib/
+.settings/websquare_home/license/
+
+# 자동 생성물
+WebContent/_wpack_/
+build/

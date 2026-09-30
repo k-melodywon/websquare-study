@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataList baseNode="list" repeatNode="map" id="dlt_menu" saveRemovedData="true">
+            		<w2:columnInfo>
+            			<w2:column id="menuId" name="메뉴ID" dataType="text"></w2:column>
+            			<w2:column id="menuName" name="메뉴명" dataType="text"></w2:column>
+            			<w2:column id="parentMenuId" name="상위메뉴ID" dataType="text"></w2:column>
+
+            			<w2:column id="menuUrl" name="메뉴Url" dataType="text"></w2:column>
+            			<w2:column id="menuLevel" name="메뉴깊이" dataType="text"></w2:column>
+            		</w2:columnInfo>
+            		<w2:data use="true">
+            			<w2:row>
+            				<menuId><![CDATA[D1]]></menuId>
+            				<menuName><![CDATA[DAY1]]></menuName>
+            				<menuLevel><![CDATA[1]]></menuLevel>
+            			</w2:row>
+            			<w2:row>
+            				<menuId><![CDATA[D1_01]]></menuId>
+            				<menuName><![CDATA[컴포넌트 실습]]></menuName>
+            				<parentMenuId><![CDATA[D1]]></parentMenuId>
+            				<menuLevel><![CDATA[2]]></menuLevel>
+            				<menuUrl><![CDATA[CP001.xml]]></menuUrl>
+            			</w2:row>
+            			<w2:row>
+            				<menuId><![CDATA[D1_02]]></menuId>
+            				<menuName><![CDATA[scwin/이벤트]]></menuName>
+            				<parentMenuId><![CDATA[D1]]></parentMenuId>
+            				<menuLevel><![CDATA[2]]></menuLevel>
+            			</w2:row>
+            			<w2:row>
+            				<menuId><![CDATA[D1_03]]></menuId>
+            				<menuName><![CDATA[DataMap]]></menuName>
+            				<parentMenuId><![CDATA[D1]]></parentMenuId>
+            				<menuLevel><![CDATA[2]]></menuLevel>
+            			</w2:row>
+            			<w2:row>
+            				<menuId><![CDATA[D1_04]]></menuId>
+            				<menuName><![CDATA[DataList]]></menuName>
+            				<parentMenuId><![CDATA[D1]]></parentMenuId>
+            				<menuLevel><![CDATA[2]]></menuLevel>
+            			</w2:row>
+            			<w2:row>
+            				<menuId><![CDATA[D1_05]]></menuId>
+            				<menuName><![CDATA[GridView]]></menuName>
+            				<parentMenuId><![CDATA[D1]]></parentMenuId>
+            				<menuLevel><![CDATA[2]]></menuLevel>
+            			</w2:row>
+            		</w2:data>
+            	</w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.trv_menu_onclick = function() {
+
+    var menuId = trv_menu.getSelectedValue();
+    var menuUrl = scwin.getMenuUrl(menuId);
+    if (menuUrl === "") {
+        return;
+    }
+
+    wfm_content.setSrc(menuUrl);
+};
+
+
+scwin.getMenuUrl = function(menuId) {
+    var rows = dlt_menu.getMatchedJSON("menuId", menuId);
+    if (rows.length === 0) {
+        return "";
+    }
+    return rows[0].menuUrl || "";   // 상위 메뉴(DAY1)는 menuUrl이 없으므로 ""
+};]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="grp_menu" style="position:absolute; left:0; top:0; bottom:0; width:200px;">
+    		<w2:treeview id="trv_menu" dataType="listed" tooltipGroupClass="false" style="width: 200px;height: 200px;" ev:onclick="scwin.trv_menu_onclick">
+    			<w2:itemset nodeset="data:dlt_menu">
+    				<w2:label ref="menuName"></w2:label>
+    				<w2:value ref="menuId"></w2:value>
+    				<w2:depth ref="menuLevel"></w2:depth>
+    				<w2:folder ref=""></w2:folder>
+    				<w2:checkbox ref=""></w2:checkbox>
+    				<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+    				<w2:image ref=""></w2:image>
+    				<w2:iconImage ref=""></w2:iconImage>
+    				<w2:selectedImage ref=""></w2:selectedImage>
+    				<w2:expandedImage ref=""></w2:expandedImage>
+    				<w2:leafImage ref=""></w2:leafImage>
+    			</w2:itemset>
+    		</w2:treeview>
+    		
+    	</xf:group><w2:wframe style="position:absolute; left:210px; top:0; right:0; bottom:0;width:558px;" id="wfm_content"></w2:wframe>
+
+    	
+    </body>
+</html>
