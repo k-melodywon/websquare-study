@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="6">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	console.log("페이지가 열렸습니다.");
+    opt_result.setValue("scwin.onpageload 함수 실행<br>이벤트 실습을 시작하세요.");
+};
+
+scwin.ipt_name_onchange = function(info) {
+    var name = ipt_name.getValue();
+    opt_result.setValue(
+        "이름이 변경되었습니다: " + name
+    );
+};
+
+scwin.ipt_name_onblur = function(e) {
+    var name = ipt_name.getValue();
+     if (name === "") {
+        opt_result.setValue("이름을 입력해주세요.");
+    }
+};
+
+scwin.ipt_keyword_onkeyup = function(e) {
+    var keyword = ipt_keyword.getValue();
+    
+    console.log("onkeyup - 현재 검색어:", keyword);
+
+    opt_result.setValue(
+        "현재 검색어: " + keyword
+    );
+};
+
+scwin.sbx_dept_onchange = function(info) {
+    var deptCode = sbx_dept.getValue();
+    opt_result.setValue("선택한 부서 코드: "+ deptCode);
+};
+
+
+
+scwin.btn_search_onclick = function(e) {
+    var name = ipt_name.getValue();
+    var deptCode = sbx_dept.getValue();
+    var keyword = ipt_keyword.getValue();
+
+    opt_result.setValue(
+        "이름: " + name
+        + " / 부서코드: " + deptCode
+        + " / 검색어: " + keyword
+    );
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="" style="display: flex">
+    		<w2:textbox style="width: 150px;height: 23px;" id="" label="이름"></w2:textbox>
+    		<xf:input style="width: 144px;height: 21px;" id="ipt_name" ev:onchange="scwin.ipt_name_onchange"
+    			ev:onblur="scwin.ipt_name_onblur">
+    		</xf:input>
+    	</xf:group>
+    	<xf:group id="" style="display: flex">
+    		<w2:textbox id="" label="부서" style="width: 150px;height: 23px;"></w2:textbox>
+    		<xf:select1 id="sbx_dept" chooseOption="" style="width: 148px;height: 21px;" submenuSize="auto" allOption="" disabled="false"
+    			direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" ev:onchange="scwin.sbx_dept_onchange">
+    			<xf:choices>
+    				<xf:item>
+    					<xf:label><![CDATA[솔루션개발팀]]></xf:label>
+    					<xf:value><![CDATA[D01]]></xf:value>
+    				</xf:item>
+    				<xf:item>
+    					<xf:label><![CDATA[경영지원팀]]></xf:label>
+    					<xf:value><![CDATA[D02]]></xf:value>
+    				</xf:item>
+    			</xf:choices>
+    		</xf:select1>
+    	</xf:group>
+    	<xf:group id="" style="display: flex">
+    		<w2:textbox id="" label="검색어" style="width: 150px;height: 23px;"></w2:textbox>
+    		<xf:input id="ipt_keyword" style="width: 144px;height: 21px;" ev:onkeyup="scwin.ipt_keyword_onkeyup"></xf:input>
+    	</xf:group>
+    	<xf:trigger type="button" id="btn_search" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_search_onclick">
+    		<xf:label><![CDATA[조회]]></xf:label>
+    	</xf:trigger>
+    <xf:group id=""><w2:textbox style="width: 150px;height: 23px;" id="" label="결과"></w2:textbox><xf:output style="width: 100%;height: 23px;" label="" id="opt_result" escape="false">
+    		<xf:label><![CDATA[]]></xf:label>
+    	</xf:output></xf:group></body>
+</html>

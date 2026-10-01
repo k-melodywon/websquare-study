@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ⑨ SQL : namespace = Mapper 인터페이스, id = 메서드 이름 -->
+<mapper namespace="com.study.emp.dao.EmpMapper">
+
+	<!-- WRM 샘플 DB의 사원 테이블을 조회만 함 -->
+	<select id="selectEmpList" parameterType="Map" resultType="Map">
+		SELECT EMP_CD  AS empCd,
+		       EMP_NM  AS empNm,
+		       ORG_CD  AS orgCd,
+		       EMAIL   AS email
+		  FROM HM_MEMBER_BASIC
+		<where>
+			<if test="empNm != null and empNm != ''">
+				AND EMP_NM LIKE CONCAT('%', #{empNm}, '%')
+			</if>
+		</where>
+		 ORDER BY EMP_CD
+	</select>
+</mapper>

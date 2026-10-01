@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="">
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+                <!-- ③ 검색조건 DataMap : 입력창(ipt_empNm)과 연결 -->
+                <w2:dataMap baseNode="map" id="dma_search">
+                    <w2:keyInfo>
+                        <w2:key id="empNm" name="사원명" dataType="text"></w2:key>
+                    </w2:keyInfo>
+                </w2:dataMap>
+                <!-- ② Grid와 연결된 DataList : 조회 결과가 담기는 곳 -->
+                <w2:dataList baseNode="list" repeatNode="map" id="dlt_emp">
+                    <w2:columnInfo>
+                        <w2:column id="empCd" name="사번" dataType="text"></w2:column>
+                        <w2:column id="empNm" name="사원명" dataType="text"></w2:column>
+                        <w2:column id="orgCd" name="부서코드" dataType="text"></w2:column>
+                        <w2:column id="email" name="이메일" dataType="text"></w2:column>
+                    </w2:columnInfo>
+                </w2:dataList>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+            <!-- ⑥ Submission : action = 서버 URL, ref = 보낼 데이터, target = 결과를 받을 DataList(⑩) -->
+            <xf:submission id="sbm_searchEmp" ref="data:json,dma_search" target="data:json,dlt_emp"
+                action="/emp/search" method="post" mediatype="application/json" encoding="UTF-8"
+                mode="asynchronous" ev:submitdone="scwin.sbm_searchEmp_submitdone" ev:submiterror="scwin.sbm_searchEmp_submiterror">
+            </xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+
+};
+
+// ④ 조회 버튼 onclick
+scwin.btn_search_onclick = function(e) {
+    // ⑤ executeSubmission : sbm_searchEmp 실행 → /emp/search 로 요청
+    $p.executeSubmission("sbm_searchEmp");
+};
+
+// 조회 성공 : 이 시점에는 이미 dlt_emp 에 결과가 들어와 있음 (⑩)
+scwin.sbm_searchEmp_submitdone = function(e) {
+    opt_count.setValue("조회 건수 : " + dlt_emp.getRowCount() + "건");
+};
+
+scwin.sbm_searchEmp_submiterror = function(e) {
+    alert("조회 중 오류가 발생했습니다.");
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+        <xf:group id="grp_search" style="padding:10px;">
+            <w2:textbox id="" label="사원명" style="display:inline-block;width:60px;"></w2:textbox>
+            <xf:input id="ipt_empNm" ref="data:dma_search.empNm" style="width:150px;height:21px;"></xf:input>
+            <xf:trigger type="button" id="btn_search" style="width:80px;height:23px;" ev:onclick="scwin.btn_search_onclick">
+                <xf:label><![CDATA[조회]]></xf:label>
+            </xf:trigger>
+            <w2:textbox id="opt_count" label="" style="display:inline-block;margin-left:10px;"></w2:textbox>
+        </xf:group>
+
+        <!-- ① GridView : dataList 속성으로 dlt_emp 와 연결, 컬럼 id = DataList 컬럼 id -->
+        <w2:gridView id="grd_emp" dataList="data:dlt_emp" style="width:600px;height:250px;margin:0 10px;" defaultCellHeight="22">
+            <w2:header id="header1">
+                <w2:row id="row1">
+                    <w2:column id="h_empCd" inputType="text" width="100" value="사번" displayMode="label"></w2:column>
+                    <w2:column id="h_empNm" inputType="text" width="120" value="사원명" displayMode="label"></w2:column>
+                    <w2:column id="h_orgCd" inputType="text" width="120" value="부서코드" displayMode="label"></w2:column>
+                    <w2:column id="h_email" inputType="text" width="240" value="이메일" displayMode="label"></w2:column>
+                </w2:row>
+            </w2:header>
+            <w2:gBody id="gBody1">
+                <w2:row id="row2">
+                    <w2:column id="empCd" inputType="text" width="100" displayMode="label"></w2:column>
+                    <w2:column id="empNm" inputType="text" width="120" displayMode="label"></w2:column>
+                    <w2:column id="orgCd" inputType="text" width="120" displayMode="label"></w2:column>
+                    <w2:column id="email" inputType="text" width="240" displayMode="label"></w2:column>
+                </w2:row>
+            </w2:gBody>
+        </w2:gridView>
+    </body>
+</html>

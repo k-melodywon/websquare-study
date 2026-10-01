@@ -6,3 +6,6 @@ WebContent/WEB-INF/lib/
 # 자동 생성물
 WebContent/_wpack_/
 build/
+
+# DB 접속 정보 (비밀번호 포함, 업로드 금지)
+src/com/study/config/db.properties

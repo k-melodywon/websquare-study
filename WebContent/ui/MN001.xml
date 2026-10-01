@@ -35,12 +35,14 @@
             				<menuName><![CDATA[scwin/이벤트]]></menuName>
             				<parentMenuId><![CDATA[D1]]></parentMenuId>
             				<menuLevel><![CDATA[2]]></menuLevel>
+            				<menuUrl><![CDATA[EV001.xml]]></menuUrl>
             			</w2:row>
             			<w2:row>
             				<menuId><![CDATA[D1_03]]></menuId>
             				<menuName><![CDATA[DataMap]]></menuName>
             				<parentMenuId><![CDATA[D1]]></parentMenuId>
             				<menuLevel><![CDATA[2]]></menuLevel>
+            				<menuUrl><![CDATA[DM001.xml]]></menuUrl>
             			</w2:row>
             			<w2:row>
             				<menuId><![CDATA[D1_04]]></menuId>

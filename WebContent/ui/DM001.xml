@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dm_emp_manual">
+            		<w2:keyInfo>
+            			<w2:key id="empNo" name="사원번호" dataType="text"></w2:key>
+            			<w2:key id="empName" name="사원이름" dataType="text"></w2:key>
+            			<w2:key id="deptCode" name="부서코드" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            	<w2:dataMap baseNode="map" id="dm_emp_bind" style="">
+            		<w2:keyInfo>
+            			<w2:key dataType="text" id="empNo" name="사원번호"></w2:key>
+            			<w2:key dataType="text" id="empName" name="사원이름"></w2:key>
+            			<w2:key dataType="text" id="deptCode" name="부서코드"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="display: flex"><xf:group id="">
+    		<w2:textbox style="width: 150px;height: 23px;" id="" label="바인딩 안 함"></w2:textbox>
+    		<xf:group style="display: flex;" id="">
+    			<w2:textbox style="width: 150px;height: 23px;" id="" label="사번"></w2:textbox>
+    			<xf:input style="width: 144px;height: 21px;" id="" class="empNo"></xf:input>
+    		</xf:group>
+    		<xf:group style="display: flex;" id="">
+    			<w2:textbox style="width: 150px;height: 23px;" id="" label="이름"></w2:textbox>
+    			<xf:input style="width: 144px;height: 21px;" id="" class="empNo"></xf:input>
+    		</xf:group>
+    		<xf:group style="display: flex;" id="">
+    			<w2:textbox style="width: 150px;height: 23px;" id="" label="부서"></w2:textbox>
+    			<xf:input style="width: 144px;height: 21px;" id="" class="empNo"></xf:input>
+    		</xf:group>
+    		<xf:trigger style="width:110px;height:37px;" id="" type="button">
+    			<xf:label><![CDATA[DataMap 저장]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger style="width:110px;height:37px;" id="" type="button">
+    			<xf:label><![CDATA[DataMap 조회]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger style="width:110px;height:37px;" id="" type="button">
+    			<xf:label><![CDATA[초기화]]></xf:label>
+    		</xf:trigger>
+    		<xf:output style="width: 150px;height: 23px;" label="" id="">
+    			<xf:label><![CDATA[결과:]]></xf:label>
+    		</xf:output>
+    	</xf:group><xf:group style="padding-left: 50px" id="">
+    		<w2:textbox style="width: 150px;height: 23px;" id="" label="바인딩 함"></w2:textbox>
+    		<xf:group style="display: flex;" id="">
+    			<w2:textbox style="width: 150px;height: 23px;" id="" label="사번"></w2:textbox>
+    			<xf:input style="width: 144px;height: 21px;" id="" class="empNo"></xf:input>
+    		</xf:group>
+    		<xf:group style="display: flex;" id="">
+    			<w2:textbox style="width: 150px;height: 23px;" id="" label="이름"></w2:textbox>
+    			<xf:input style="width: 144px;height: 21px;" id="" class="empNo"></xf:input>
+    		</xf:group>
+    		<xf:group style="display: flex;" id="">
+    			<w2:textbox style="width: 150px;height: 23px;" id="" label="부서"></w2:textbox>
+    			<xf:input style="width: 144px;height: 21px;" id="" class="empNo"></xf:input>
+    		</xf:group>
+    		<xf:trigger style="width:110px;height:37px;" id="" type="button">
+    			<xf:label><![CDATA[DataMap 저장]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger style="width:110px;height:37px;" id="" type="button">
+    			<xf:label><![CDATA[DataMap 조회]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger style="width:110px;height:37px;" id="" type="button">
+    			<xf:label><![CDATA[초기화]]></xf:label>
+    		</xf:trigger>
+    		<xf:output style="width: 150px;height: 23px;" id="" label="">
+    			<xf:label><![CDATA[결과:]]></xf:label>
+    		</xf:output>
+    	</xf:group></xf:group></body>
+</html>
